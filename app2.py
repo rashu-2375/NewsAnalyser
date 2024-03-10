@@ -16,15 +16,21 @@ import psycopg2  #DB connection
 import json
 import re
 
-########################################  Flask Instance and DB connection  and Table creation  #################################
+nltk.download('averaged_perceptron_tagger')
+nltk.download("stopwords")
+nltk.download("punkt")
+nltk.download('universal_tagset'
 
+########################################  Flask Instance and DB connection  and Table creation  #################################
+database_url = "dpg-cnmn6gmn7f5s73d7s5f0-a.oregon-postgres.render.com"
+host = f"{database_url}"
 app = Flask(__name__)
 def connect_db():
     conn = psycopg2.connect(
-        dbname="dhp2024",
-        user="postgres",
-        password="2375rashu",
-        host="localhost"
+        dbname="dhp2024_muqf",
+        user="dhp2024_muqf_user",
+        password="VDnibngKxYSg9RYrQRNEdKz0QFm2f0v6",
+        host=host
     )
     return conn
 
