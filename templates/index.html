@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Analysis</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 16px;
+            width: 70%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        p.error {
+            color: red;
+        }
+
+        h2 {
+            margin-top: 30px;
+            text-decoration: underline;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>News Analysis</h1>
+    
+    <form method="post" action="/submit">
+        <label for="url">Enter URL:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="submit" name="submit" value="abc">Submit</button>
+    </form>
+    <p>Note:- follow the Indian express with 'https://indianexpress.com/article/'</p>
+
+    {% if errors %}
+        <p class="error">{{ errors }}</p>
+    {% endif %}
+
+    {% if summary %}
+        <h2>{{ title }}</h2>
+        <p>{{ newstype }}</p>
+        <p>Number of Words: {{ num_words }}</p>
+        <p>Reading Time: {{ reading_time_minutes }} minutes</p>
+
+        <h3>Summary:</h3>
+        <p>{{ summary }}</p>
+
+        <h3>Cleaned Text:</h3>
+        <p>{{ cleaned_text }}</p>
+
+        <h3>POS Tags:</h3>
+        <ul>
+            {% for tag, count in pos_tags.items() %}
+                <li>{{ tag }}: {{ count }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <h2>History</h2>
+    <a href="/history">View History</a>
+</body>
+</html>
