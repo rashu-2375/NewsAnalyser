@@ -19,7 +19,7 @@ import re
 nltk.download('averaged_perceptron_tagger')
 nltk.download("stopwords")
 nltk.download("punkt")
-nltk.download('universal_tagset'
+nltk.download('universal_tagset')
 
 ########################################  Flask Instance and DB connection  and Table creation  #################################
 database_url = "dpg-cnmn6gmn7f5s73d7s5f0-a.oregon-postgres.render.com"
